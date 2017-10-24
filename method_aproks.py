@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.interpolate import interp1d
 
 def enter_nodes(n):
 	x = []
@@ -16,8 +17,13 @@ def construction_of_equation(x):
 	return np.array(equation)
 
 if __name__ == '__main__':
+	
+	l_limit = float(input('Enter L limit: '))
+	r_limit = float(input('Enter R limit: '))
 
-	x = np.arange(-np.pi, 2*np.pi+np.pi/2, np.pi/4)
+	n = int(input("Enter nodes: "))
+	# x, y = enter_nodes(n)
+	x = np.linspace(l_limit, r_limit, n)
 	y = np.cos(x)
 
 	equation = construction_of_equation(x)
@@ -25,13 +31,14 @@ if __name__ == '__main__':
 
 	polynom = np.poly1d(ai[::-1])
 	
-	print(polynom)
-	t = np.arange(-np.pi, 2*np.pi, 0.01)
+	print("Polynom: \n", polynom)
+	t = np.arange(l_limit, r_limit, 0.01)
 
 	plt.plot(t, np.cos(t), label="Cos")
 	plt.plot(t, polynom(t), label="My")
+	plt.plot(x, y, 'o', label="Nodes", alpha=0.5)
+
 	plt.legend()
 	plt.grid(True)
 	plt.show()
-
 
