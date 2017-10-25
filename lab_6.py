@@ -84,9 +84,13 @@ axes[0].plot(t_p, sol[:, 0], label='X_real')
 axes[0].plot(t_p, sol[:, 1], label='Y_real')
 axes[0].plot(t_1, x_1, '--',  label="X")
 axes[0].plot(t_1, y_1, '--',  label="Y")
+axes[0].set(title='Original function', xlabel='t', ylabel='F(t)')
+
+
 
 axes[1].plot(sol[:, 0], sol[:, 1], label='Real')
 axes[1].plot(x_1, y_1, label='My')
+axes[1].set(title='Dependence between the original functions', xlabel='x', ylabel='y')
 
 
 axes[0].grid(True)
